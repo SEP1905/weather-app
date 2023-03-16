@@ -23,6 +23,39 @@ function formatDate(date) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function displayForecast() {
+    let forecastElement = document.querySelector("#forecast");
+    let days = ["Thu","Fri","Sat","Sun"];
+
+    let forecastHTML = `<div class="row">`;
+    days.forEach(function (day) {
+
+     forecastHTML =
+     forecastHTML +
+    `
+   
+                    <div class="col-2">
+                    <div class="weather-forecast-date">${day}</div>
+                        <img 
+                          src="https://openweathermap.org/img/wn/10d@2x.png"
+                          alt=""
+                          width="36"
+                          />
+                          <div class="weather-forecast-temperatures">
+                            <span class="weather-forecast-temperature-max">22°</span>
+                            <span class="weather-forecast-temperature-min">13°</span>
+                          </div>
+                    </div>
+                
+              `;
+              });
+
+              forecastHTML = forecastHTML +  `</div> `;
+              forecastElement.innerHTML = forecastHTML;
+              console.log(forecastHTML);
+}
+
+
 function displayWeatherCondition(response) {
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = Math.round(
@@ -80,9 +113,6 @@ function displayCelsiusTemperature(event) {
 let celsiusTemperature = null;
 
 
-
-
-
 function searchLocation(position) {
   let apiKey = "082d3d02ffdb12f2fd9b259e2ced1d0d";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
@@ -112,6 +142,5 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
-
-
 searchCity("London");
+displayForecast();
