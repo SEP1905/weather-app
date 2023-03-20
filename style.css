@@ -7,6 +7,15 @@ body{
         
 }
 
+.search-form {
+    margin-bottom: 20px;
+    position: relative;
+        left: 40px;
+}
+.city-input{
+    float: right;
+}
+
 h1{
     color: white;
     font-size: 30px;
@@ -116,9 +125,7 @@ li:first-letter {
 .weather-forecast-temperatures {
     font-size: 13px;
 }
-.search-form {
-    margin-bottom: 20px;
-}
+
 hr{
     color: white;
 }
